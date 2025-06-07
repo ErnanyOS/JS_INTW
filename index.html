@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Funções em JavaScript</title>
+</head>
+<body>
+  <h1>Funções em JavaScript</h1>
+  <p>Abra o console ou recarregue a página para testar as funções via prompts.</p>
+
+  <script>
+    // 1) MAIOR_MENOR
+    function MAIOR_MENOR(a, b, c, d, e) {
+      let valores = [a, b, c, d, e];
+      let maior = Math.max(...valores);
+      let menor = Math.min(...valores);
+      alert(`Maior valor: ${maior}\nMenor valor: ${menor}`);
+    }
+
+    // 2) VOGAL
+    function VOGAL(c) {
+      c = c.toLowerCase();
+      return ['a', 'e', 'i', 'o', 'u'].includes(c) ? 1 : 0;
+    }
+
+    // 3) LIMITES
+    function LIMITES(li, ls) {
+      let pares = [];
+      let soma = 0;
+      for (let i = li + 1; i < ls; i++) {
+        if (i % 2 === 0) {
+          pares.push(i);
+          soma += i;
+        }
+      }
+      alert(`Números pares: ${pares.join(', ')}\nSomatório: ${soma}`);
+    }
+
+    // 4) ORDEM
+    function ORDEM(a, b, c) {
+      let ordenados = [a, b, c].sort((x, y) => x - y);
+      alert(`Valores em ordem crescente: ${ordenados.join(', ')}`);
+    }
+
+    // 5) POSITIVO_NEGATIVO
+    function POSITIVO_NEGATIVO(x) {
+      return x >= 0;
+    }
+
+    // 6) PAR_IMPAR
+    function PAR_IMPAR(x) {
+      return x % 2 === 0;
+    }
+
+    // MENU INTERATIVO
+    function menu() {
+      const escolha = prompt(
+        "Escolha uma função:\n" +
+        "1 - MAIOR_MENOR\n" +
+        "2 - VOGAL\n" +
+        "3 - LIMITES\n" +
+        "4 - ORDEM\n" +
+        "5 - POSITIVO_NEGATIVO\n" +
+        "6 - PAR_IMPAR\n" +
+        "0 - Sair"
+      );
+
+      switch (escolha) {
+        case '1':
+          let a1 = parseInt(prompt("Digite o valor 1:"));
+          let b1 = parseInt(prompt("Digite o valor 2:"));
+          let c1 = parseInt(prompt("Digite o valor 3:"));
+          let d1 = parseInt(prompt("Digite o valor 4:"));
+          let e1 = parseInt(prompt("Digite o valor 5:"));
+          MAIOR_MENOR(a1, b1, c1, d1, e1);
+          break;
+        case '2':
+          let letra = prompt("Digite uma letra:");
+          let resultadoVogal = VOGAL(letra);
+          alert(`É vogal? ${resultadoVogal === 1 ? "Sim" : "Não"}`);
+          break;
+        case '3':
+          let li = parseInt(prompt("Digite o limite inferior:"));
+          let ls = parseInt(prompt("Digite o limite superior:"));
+          if (li < ls) {
+            LIMITES(li, ls);
+          } else {
+            alert("Erro: intervalo deve ser crescente.");
+          }
+          break;
+        case '4':
+          let a4 = parseInt(prompt("Digite o primeiro número:"));
+          let b4 = parseInt(prompt("Digite o segundo número:"));
+          let c4 = parseInt(prompt("Digite o terceiro número:"));
+          ORDEM(a4, b4, c4);
+          break;
+        case '5':
+          let x5 = parseInt(prompt("Digite um número:"));
+          alert(`É positivo? ${POSITIVO_NEGATIVO(x5)}`);
+          break;
+        case '6':
+          let x6 = parseInt(prompt("Digite um número:"));
+          alert(`É par? ${PAR_IMPAR(x6)}`);
+          break;
+        case '0':
+          alert("Saindo...");
+          break;
+        default:
+          alert("Opção inválida.");
+      }
+    }
+
+    menu(); // executa automaticamente ao carregar
+  </script>
+</body>
+</html>
